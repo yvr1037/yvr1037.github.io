@@ -475,14 +475,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    186
+                    689
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -502,8 +502,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这是我的第一篇博文，花了很长时间来进行操作，在网上搜索的教程参差不齐，也同样会出现各种各样的问题，比如nodejs版本过高与hexo不兼容问题，我觉得还是有问题还是要多和其他人沟通，另外对主题的设置可以按照自己的风格来，但是这就需要对web知识有一定的了解，对排版有自己的理解才可以。<br>在我看来，博客更加注重的应该是内容，以及养成记录日记的习惯，对自己每个阶段的学习有一个适当的总结，可以让自己计划更加明确。</p>
-<p>这就是博客的作用</p>
+                <p>这是我的第一篇博文，花了很长时间来进行操作，在网上搜索的教程参差不齐，也同样会出现各种各样的问题，比如nodejs版本过高与hexo不兼容问题，我觉得还是有问题还是要多和其他人沟通，另外对主题的设置可以按照自己的风格来，但是这就需要对web知识有一定的了解，对排版有自己的理解才可以。<br>在我看来，博客更加注重的应该是内容，以及养成记录日记的习惯，对自己每个阶段的学习有一个适当的总结，可以让自己计划更加明确。<br>所以我就简单介绍hexo+github.io搭建博客过程中重要的点吧(我是用的主题是matery)</p>
+<h4 id="本地配置文件"><a href="#本地配置文件" class="headerlink" title="本地配置文件"></a>本地配置文件</h4><p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210916214915453.png" alt="image-20210916214915453"></p>
+<ul>
+<li><p><strong>_config.yml</strong>：</p>
+<p>网站<strong>站点配置文件</strong>，又叫根目录站点配置文件，在这个文件里面可以配置大部分的参数</p>
+</li>
+<li><p><strong>scaffolds</strong>:</p>
+<p>此文件夹会放一些默认的文件，用来当作创建博文的模板md文件，hexo会根据scaffold来建立文件。模板是指新建的md文件会默认放入模板文件的初始内容</p>
+</li>
+<li><p><strong>public</strong>：</p>
+<p>这个文件的内容最终都会push到github仓库中</p>
+</li>
+<li><p><strong>source</strong>:</p>
+<p>这个文件夹是存放用户资源的地方，除了<code>_posts</code>文件夹之外，开头命名为_(下划线的文件/文件夹以及隐藏的文件都会被忽略)。markdown和html文件都会被解析并放到<strong>public</strong>文件夹里面，而其他文件会被拷贝到public文件夹。</p>
+</li>
+<li><p>**为github仓库添加readme</p>
+<p>既然<code>source</code>文件夹中的内容会被全部推送到public文件夹，public文件夹中的内容最终又会被push到github仓库，所以如果想要为github仓库添加readme.md，只要在source文件夹中创建就好了。最后<strong>部署</strong>到github就有readme了。但是会发现，README.md文件部署的时候会被解析成html文件，显示的是html代码，不是我们想要的文档内容。</p>
+<p><strong>解决办法</strong>：将在source文件夹新建的README.md重命名为REMADE.MDWN，在重新部署到github。(source文件夹中，.md会被解析为html。并放到public文件夹被push到github，但.MDWN不会被解析)</p>
+</li>
+</ul>
+<h4 id="一些常用的Hexo命令"><a href="#一些常用的Hexo命令" class="headerlink" title="一些常用的Hexo命令"></a>一些常用的Hexo命令</h4><ul>
+<li><p>常用命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new "postName" #新建博文</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，’crtl+c'关闭server）</span><br><span class="line">hexo deploy #部署到github</span><br><span class="line">hexo help #查看帮助</span><br><span class="line">hexo version #查看版本</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>缩写</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>组合命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g #生成并本地预览</span><br><span class="line">hexo d -g #生成并部署到云端</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
 
                 
             </div>
@@ -530,7 +556,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yvr1037.github.io/2021/09/15/first-blog/">http://yvr1037.github.io/2021/09/15/first-blog/</a>
+                    <a href="http://yvr1037.github.io/2021/09/15/001/">http://yvr1037.github.io/2021/09/15/001/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -749,18 +775,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/09/15/first-blog/">
+                <a href="/2021/09/16/002/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="第一篇，表达点看法吧">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="测试">
                         
-                        <span class="card-title">第一篇，表达点看法吧</span>
+                        <span class="card-title">测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -770,35 +795,22 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%B5%8B%E8%AF%95%E7%9A%84%E5%AD%90%E5%88%86%E7%B1%BB/" class="post-category">
-                                    测试，测试的子分类
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            yvr1037
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E6%96%87/">
-                        <span class="chip bg-color">博文</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
-                    </a>
-                    
-                    <a href="/tags/whatever/">
-                        <span class="chip bg-color">whatever</span>
+                    <a href="/tags/dian/">
+                        <span class="chip bg-color">dian</span>
                     </a>
                     
                 </div>
@@ -812,7 +824,7 @@
                 Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/15/first-blog/">
+                <a href="/2021/09/15/001/">
                     <div class="card-image">
                         
                         
@@ -1061,7 +1073,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">186</span>
+                        class="white-color">689</span>
             
             
             
