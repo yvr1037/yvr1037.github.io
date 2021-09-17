@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="测试, 机器学习,深度学习;">
+    <meta name="keywords" content="机器学习,深度学习;">
     <meta name="description" content="啦啦啦">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>测试 | yvr</title>
+    <title>yvr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">测试</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -431,13 +431,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/dian/">
-                                <span class="chip bg-color">dian</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -449,7 +445,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-09-16
+                    2021-09-17
                 </div>
                 
 
@@ -458,14 +454,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    7 Min
                 </div>
                 
 
@@ -488,7 +484,223 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>算法入门：啊哈算法 算法图解 大话数据结构<br>算法进阶：cf 白书 紫书 蓝书</p>
+<h2 id="第一章-基础算法"><a href="#第一章-基础算法" class="headerlink" title="第一章 基础算法"></a>第一章 基础算法</h2><h3 id="基础算法-一"><a href="#基础算法-一" class="headerlink" title="基础算法(一)"></a>基础算法(一)</h3><h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><ul>
+<li>含义:排序是指将一个无序序列按照某个规则进行有序排列(以下排序均实现的是从小到大排序)</li>
+</ul>
+<h5 id="简单排序"><a href="#简单排序" class="headerlink" title="简单排序"></a>简单排序</h5><ul>
+<li>冒泡排序的本质在于==交换== ，即每次通过交换的方式把当前剩余元素的最大值移动到一端</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># 冒泡排序(以下实现从小到大排序)
+int a[n]={......};
+for(int i=1;i&lt;n;i++){  //进行n-1躺
+	//第i躺，从a[0]-a[n-i-1]每一个数都要与下一个数进行比较，遇到后面比自己较大的数就交换，实现每一趟剩余的数a[0]-a[n-		i]的冒泡排序，使当前a[0]~a[n-i]中的最大的元素移动到z'y，后面的a[n-i+1]-a[i]已经排好序
+    for(int i=0;j&lt; n-i;j++){
+        if(a[j] &gt; a[j+1]){  //如果左边的数更大，则a[j]与a[j+1]交换
+            int temp = a[j];
+            a[j] = a[j+1];
+            a[j+1] = temp;
+        }
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>(简单)选择排序：</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># 选择排序(以下实现从小到大排序)
+# 简单选择排序是指对一个序列a[n]中的元素a[1]~a[n]，令i从1~n进行枚举，进行n趟操作，每趟从待排序部分[i,n]其中选择最小的元素，令其与待排部分的第一个元素a[i]进行交换，这样元素a[i]就会与当前区间[1,i-1]形成新的有序区间[1,i],n趟操作以后，就形成有序区间
+int a[n]={......};
+void select_sort(){
+    for(int i=1;i&lt;=n;i++){  //进行n趟操作
+        int k = i;
+        for(int j=i;j&lt;=n;j++){  //选出[i,n]中最小元素的下标，并且将下标记为k
+            if(a[j]&lt;a[k]){
+                k = j;
+            }
+        }
+        int temp = a[i];  //交换a[k]与当前待排序序列[i,n]的第一个元素a[i]
+        a[i] = a[k];
+        a[j] = temp;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>(直接)插入排序：</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># 直接插入排序
+# 直接插入排序是指对序列a[n]中的元素a[i]~a[n]，i从2~n进行枚举，进行n-1趟操作。假设某一趟，序列a[1]~a[i-1]已经有序，那么这一次就是从范围[1,i-1]中寻找某个位置j,使得a[i]插入到这个位置j后，此时a[j]~a[i-1]会自动向后移动一位到a[j+1]~a[i],范围a[1,i]有序
+int a[n]={......};  //n为元素个数，数组下标为1~n
+void insert_sort(){
+    for(int i=2;i&lt;=n;i++){  //进行n-1趟排序
+        int temp = a[i],j = i; //temp临时存放a[i]
+        while(j&gt;1 &amp;&amp; temp&lt;a[j-1]){
+            a[j] = a[j-1];
+            j--;
+        }
+        a[j] = temp;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>gln</p>
+<h5 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h5><ul>
+<li><p>快排的主要思想是分治</p>
+</li>
+<li><p>```c++<br>//快排的时间复杂度是nlogn(这里所指的是平均复杂度)<br>#include <iostream></iostream></p>
+<p>acwing 785快速排序</p>
+<p>using namespace std;</p>
+<p>const int N = 1e6+10;</p>
+<p>int n;<br>int q[N];</p>
+<p>void quick_sort(int q[], int l, int r)<br>{</p>
+<pre><code>if (l &gt;= r) return;
+
+int i = l - 1, j = r + 1, x = q[l + r &gt;&gt; 1];  //x的取值可以取区间里面任意一个
+while (i &lt; j)
+{
+    do i ++ ; while (q[i] &lt; x);
+    do j -- ; while (q[j] &gt; x);
+    if (i &lt; j) swap(q[i], q[j]);
+}
+quick_sort(q, l, j); //对左边的进行快排
+quick_sort(q, j + 1, r); //对右边进行快排
+</code></pre>
+<p>}</p>
+<p>int main(){</p>
+<pre><code>scanf("%d",&amp;n);
+for(int i=0;i&lt;n;i++){
+    scanf("%d",&amp;q[i]);
+}
+quick_sort(q,0,n-1);
+
+for(int i=0;i&lt;n;i++){
+    printf("%d ",q[i]);
+}
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">  
+  
+
+##### 归并排序
+
+- 归并的主要思想也是分治
+
+- ```c++
+  acwing787 归并排序
+  
+  #include &lt;iostream&gt;
+  
+  using namespace std;
+  
+  const int N = 1e6+10;
+  
+  int n;
+  int q[N];
+  int tmp[N];
+  
+  void merge_sort(int q[],int l,int r){
+      if(l&gt;=r) return ;
+      
+      int mid = l+r &gt;&gt; 1;  //1：确定分界点
+      
+      merge_sort(q,l,mid);   //对左右两边分别进行归并排序
+      merge_sort(q,mid+1,r);
+      
+      // 将左右两边进行归并排序，把两个有序的序列拼接在一起，拼接的方法就是归并
+      int k=0,i=l,j=mid+1; 
+      while(i&lt;=mid &amp;&amp; j&lt;= r){
+          if(q[i]&lt;=q[j]) tmp[k++] = q[i++];
+          else tmp[k++] = q[j++];
+      }
+      while(i&lt;=mid) tmp[k++]=q[i++];  //对于q[l]~[mid]和q[mid+1~r]两个序列，如果存在序列没有循环结束的话就直接								到tmp序列后面即可
+      while(j&lt;=r) tmp[k++]=q[j++];
+      
+      for(i=l,j=0;i &lt;= r;i++,j++) q[i] = tmp[j];
+  }
+  int main(){
+      scanf("%d",&amp;n);
+      for(int i=0;i&lt;n;i++) scanf("%d",&amp;q[i]);
+      
+      merge_sort(q,0,n-1);
+      
+      for(int i=0;i&lt;n;i++) printf("%d ",q[i]);
+      
+      return 0;
+  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h4 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h4><h5 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h5><ul>
+<li>整数二分的本质:有单调性的话一定可以二分；但是能二分的不一定具有单调性<br>二分的本质是对于一个整数区间，我们先定义一个性质，要找到一个中间点，是的在这个点的右半边满足这个性质，左半边不满足这个性质，这样就可以把一个区间一分为二，找到这个边界</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#1.找到一个中间值mid
+# if(check(mid)) true:mid满足这个性质  false:mid不满足这个性质
+# 二分的时候一定要保证要寻找的值一定在不断缩小的那个区间里面，当区间的长度为1的时候就代表找到答案
+
+acwing789:数的范围
+
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+const int N=100010;
+
+int a,b;
+int q[N];
+
+int main(){
+    scanf("%d %d",&amp;a,&amp;b);
+    for(int i=0;i&lt;a;i++) scanf("%d",&amp;q[i]);
+    
+    while(b--){
+        int x;
+        scanf("%d",&amp;x);
+        
+        int l=0,r=a-1;
+        while(l&lt;r){
+            int mid= l+r &gt;&gt; 1;
+            if(q[mid]&gt;=x) r=mid;
+            else l=mid+1;
+        }
+        
+        if(q[l]!=x) cout&lt;&lt;"-1 -1"&lt;&lt;endl;  // 这个表示要寻找的那个值不在区间里面，此时q[l]的值是第一个满足大于x的数
+        else{
+            cout&lt;&lt;l&lt;&lt;' ';
+            
+            int l=0,r=a-1;
+            while(l&lt;r){
+            	int mid= l+r+1 &gt;&gt; 1;
+            	if(q[mid]&lt;=x) l=mid;
+            	else r=mid-1;
+            }
+            cout&lt;&lt;l
+        }
+    }
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h5><ul>
+<li>浮点数二分:本质上也是寻找边界，满足左半边满足性质，右半边不满足性质，知道</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># 例子:算平方根
+
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int mian(){
+    double x;
+    cin&gt;&gt;x;
+    
+    double l=0,r=x;
+    double mid = (l+r)/2;
+    while(r-l &gt; 1e-8){
+        if(mid*mid&gt;=x)  r=mid;
+        else l=mid;
+    }
+    
+    printf("%lf",&amp;l);
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -514,7 +726,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yvr1037.github.io/2021/09/16/002/">http://yvr1037.github.io/2021/09/16/002/</a>
+                    <a href="http://yvr1037.github.io/2021/09/17/003/">http://yvr1037.github.io/2021/09/17/003/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,11 +763,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/dian/">
-                                    <span class="chip bg-color">dian</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -725,9 +933,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/09/17/003/">
                     <div class="card-image">
@@ -745,9 +954,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -756,6 +965,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -766,13 +976,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/15/001/">
+                <a href="/2021/09/16/002/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="第一篇，表达点看法吧">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="测试">
                         
-                        <span class="card-title">第一篇，表达点看法吧</span>
+                        <span class="card-title">测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -783,16 +993,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%B5%8B%E8%AF%95%E7%9A%84%E5%AD%90%E5%88%86%E7%B1%BB/" class="post-category">
-                                    测试，测试的子分类
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            yvr1037
                             
                         </span>
                     </div>
@@ -800,16 +1006,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E6%96%87/">
-                        <span class="chip bg-color">博文</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
-                    </a>
-                    
-                    <a href="/tags/whatever/">
-                        <span class="chip bg-color">whatever</span>
+                    <a href="/tags/dian/">
+                        <span class="chip bg-color">dian</span>
                     </a>
                     
                 </div>
