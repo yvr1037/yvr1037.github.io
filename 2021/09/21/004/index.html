@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="第一篇，表达点看法吧, 机器学习,深度学习;">
+    <meta name="keywords" content="ssh远程连接服务器, 机器学习,深度学习;">
     <meta name="description" content="啦啦啦">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>第一篇，表达点看法吧 | yvr</title>
+    <title>ssh远程连接服务器 | yvr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">第一篇，表达点看法吧</h1>
+                    <h1 class="description center-align post-title">ssh远程连接服务器</h1>
                 </div>
             </div>
         </div>
@@ -433,16 +433,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8D%9A%E6%96%87/">
-                                <span class="chip bg-color">博文</span>
+                            <a href="/tags/windows-terminal/">
+                                <span class="chip bg-color">windows terminal</span>
                             </a>
                         
-                            <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                                <span class="chip bg-color">测试</span>
-                            </a>
-                        
-                            <a href="/tags/whatever/">
-                                <span class="chip bg-color">whatever</span>
+                            <a href="/tags/ssh/">
+                                <span class="chip bg-color">ssh</span>
                             </a>
                         
                     </div>
@@ -453,8 +449,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%B5%8B%E8%AF%95%E7%9A%84%E5%AD%90%E5%88%86%E7%B1%BB/" class="post-category">
-                                测试，测试的子分类
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/" class="post-category">
+                                搭建环境
                             </a>
                         
                     </div>
@@ -466,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-09-15
+                    2021-09-21
                 </div>
                 
 
@@ -475,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    700
+                    322
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    1 Min
                 </div>
                 
 
@@ -505,44 +501,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>值得记录一下</p>
-<p>这是我的第一篇博文，花了很长时间来进行操作，在网上搜索的教程参差不齐，也同样会出现各种各样的问题，比如nodejs版本过高与hexo不兼容问题，我觉得还是有问题还是要多和其他人沟通，另外对主题的设置可以按照自己的风格来，但是这就需要对web知识有一定的了解，对排版有自己的理解才可以。<br>在我看来，博客更加注重的应该是内容，以及养成记录日记的习惯，对自己每个阶段的学习有一个适当的总结，可以让自己计划更加明确。<br>所以我就简单介绍hexo+github.io搭建博客过程中重要的点吧(我是用的主题是matery)</p>
-<h4 id="本地配置文件"><a href="#本地配置文件" class="headerlink" title="本地配置文件"></a>本地配置文件</h4><p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210916214915453.png" alt="image-20210916214915453"></p>
+                <p>​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:</p>
 <ul>
-<li><p><strong>_config.yml</strong>：</p>
-<p>网站<strong>站点配置文件</strong>，又叫根目录站点配置文件，在这个文件里面可以配置大部分的参数</p>
-</li>
-<li><p><strong>scaffolds</strong>:</p>
-<p>此文件夹会放一些默认的文件，用来当作创建博文的模板md文件，hexo会根据scaffold来建立文件。模板是指新建的md文件会默认放入模板文件的初始内容</p>
-</li>
-<li><p><strong>public</strong>：</p>
-<p>这个文件的内容最终都会push到github仓库中</p>
-</li>
-<li><p><strong>source</strong>:</p>
-<p>这个文件夹是存放用户资源的地方，除了<code>_posts</code>文件夹之外，开头命名为_(下划线的文件/文件夹以及隐藏的文件都会被忽略)。markdown和html文件都会被解析并放到<strong>public</strong>文件夹里面，而其他文件会被拷贝到public文件夹。</p>
-</li>
-<li><p>**为github仓库添加readme</p>
-<p>既然<code>source</code>文件夹中的内容会被全部推送到public文件夹，public文件夹中的内容最终又会被push到github仓库，所以如果想要为github仓库添加readme.md，只要在source文件夹中创建就好了。最后<strong>部署</strong>到github就有readme了。但是会发现，README.md文件部署的时候会被解析成html文件，显示的是html代码，不是我们想要的文档内容。</p>
-<p><strong>解决办法</strong>：将在source文件夹新建的README.md重命名为REMADE.MDWN，在重新部署到github。(source文件夹中，.md会被解析为html。并放到public文件夹被push到github，但.MDWN不会被解析)</p>
-</li>
+<li>连接实验室网络后内网连接远程服务器</li>
+<li>配置本地密钥和远程服务器用户密钥免密码启动的功能</li>
 </ul>
-<h4 id="一些常用的Hexo命令"><a href="#一些常用的Hexo命令" class="headerlink" title="一些常用的Hexo命令"></a>一些常用的Hexo命令</h4><ul>
-<li><p>常用命令</p>
-<pre class="line-numbers language-none"><code class="language-none">hexo new "postName" #新建博文
-hexo generate #生成静态页面至public目录
-hexo server #开启预览访问端口（默认端口4000，’crtl+c'关闭server）
-hexo deploy #部署到github
-hexo help #查看帮助
-hexo version #查看版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>缩写</p>
-<pre class="line-numbers language-none"><code class="language-none">hexo n == hexo new
-hexo g == hexo generate
-hexo s == hexo server
-hexo d == hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>组合命令</p>
-<pre class="line-numbers language-none"><code class="language-none">hexo s -g #生成并本地预览
-hexo d -g #生成并部署到云端<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ul>
+<h6 id="1-本地服务准备"><a href="#1-本地服务准备" class="headerlink" title="1.本地服务准备"></a>1.本地服务准备</h6><p>本地主机上打开windows terminal窗口(现在的windows一般会自动安装openSSH客户端和服务端),执行命令：</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh -keygen -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>执行命令后会在<code>.ssh</code>文件下生成两个密钥，<code>id_rsa``id_rsa.pub</code>一个私钥一个公钥;实现远程连接服务器关键是把<strong>公钥</strong>存放到远程服务器端</p>
+<h6 id="2-将本地公钥上传至服务器"><a href="#2-将本地公钥上传至服务器" class="headerlink" title="2.将本地公钥上传至服务器"></a>2.将本地公钥上传至服务器</h6><p>在windows terminal下执行命令</p>
+<pre class="line-numbers language-none"><code class="language-none">scp C:\Users\VrShadow\.ssh\id_rsa.pub XXX@192.168.0.75:\home\xxx\<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>本地公钥拷贝至远程服务器[注意xxx更改为自己在远程服务器端分配的用户名！！！],此时传过来的公钥存在<code>./home/xxx</code>下</p>
+<h6 id="3公钥写入授权文件"><a href="#3公钥写入授权文件" class="headerlink" title="3公钥写入授权文件"></a>3公钥写入授权文件</h6><p>在远程服务器上执行命令</p>
+<pre class="line-numbers language-none"><code class="language-none">touch ./ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>远程服务器端这边用的是linux系统，所以先要创建文件<code>authorized_keys</code></p>
+<p>将本地传过来的密钥<strong>写入authorizd_keys</strong>中</p>
+<pre class="line-numbers language-none"><code class="language-none">cat ./home/xxx/id_rsa.pub &gt;&gt; ./.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -569,7 +547,7 @@ hexo d -g #生成并部署到云端<span aria-hidden="true" class="line-numbers-
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yvr1037.github.io/2021/09/15/001/">http://yvr1037.github.io/2021/09/15/001/</a>
+                    <a href="http://yvr1037.github.io/2021/09/21/004/">http://yvr1037.github.io/2021/09/21/004/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -607,16 +585,12 @@ hexo d -g #生成并部署到云端<span aria-hidden="true" class="line-numbers-
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8D%9A%E6%96%87/">
-                                    <span class="chip bg-color">博文</span>
+                                <a href="/tags/windows-terminal/">
+                                    <span class="chip bg-color">windows terminal</span>
                                 </a>
                             
-                                <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                                    <span class="chip bg-color">测试</span>
-                                </a>
-                            
-                                <a href="/tags/whatever/">
-                                    <span class="chip bg-color">whatever</span>
+                                <a href="/tags/ssh/">
+                                    <span class="chip bg-color">ssh</span>
                                 </a>
                             
                         </div>
@@ -788,74 +762,18 @@ hexo d -g #生成并部署到云端<span aria-hidden="true" class="line-numbers-
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/09/16/002/">
+                <a href="/2021/09/21/004/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Dian2021夏令营">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="ssh远程连接服务器">
                         
-                        <span class="card-title">Dian2021夏令营</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/AI/" class="post-category">
-                                    AI
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/dian/">
-                        <span class="chip bg-color">dian</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                    <a href="/tags/CNN%E7%AE%80%E6%98%93%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/">
-                        <span class="chip bg-color">CNN简易框架搭建</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/09/15/001/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="第一篇，表达点看法吧">
-                        
-                        <span class="card-title">第一篇，表达点看法吧</span>
+                        <span class="card-title">ssh远程连接服务器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -866,14 +784,14 @@ hexo d -g #生成并部署到云端<span aria-hidden="true" class="line-numbers-
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%B5%8B%E8%AF%95%E7%9A%84%E5%AD%90%E5%88%86%E7%B1%BB/" class="post-category">
-                                    测试，测试的子分类
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/" class="post-category">
+                                    搭建环境
                                 </a>
                             
                             
@@ -884,16 +802,65 @@ hexo d -g #生成并部署到云端<span aria-hidden="true" class="line-numbers-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E6%96%87/">
-                        <span class="chip bg-color">博文</span>
+                    <a href="/tags/windows-terminal/">
+                        <span class="chip bg-color">windows terminal</span>
                     </a>
                     
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
+                    <a href="/tags/ssh/">
+                        <span class="chip bg-color">ssh</span>
                     </a>
                     
-                    <a href="/tags/whatever/">
-                        <span class="chip bg-color">whatever</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/09/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB(%E4%B8%80)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="论文阅读一:Attention Mechanism">
+                        
+                        <span class="card-title">论文阅读一:Attention Mechanism</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BA%E6%96%87/" class="post-category">
+                                    论文
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/">
+                        <span class="chip bg-color">注意力机制</span>
+                    </a>
+                    
+                    <a href="/tags/nlp/">
+                        <span class="chip bg-color">nlp</span>
                     </a>
                     
                 </div>
