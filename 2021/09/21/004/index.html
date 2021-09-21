@@ -471,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    322
+                    466
                 </div>
                 
 
@@ -503,10 +503,10 @@
             <div id="articleContent">
                 <p>​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:</p>
 <ul>
-<li>连接实验室网络后内网连接远程服务器</li>
-<li>配置本地密钥和远程服务器用户密钥免密码启动的功能</li>
+<li>连接实验室网络后内网连接远程服务器功能</li>
+<li>配置本地密钥和远程服务器用户密钥使其免密钥功能</li>
 </ul>
-<h6 id="1-本地服务准备"><a href="#1-本地服务准备" class="headerlink" title="1.本地服务准备"></a>1.本地服务准备</h6><p>本地主机上打开windows terminal窗口(现在的windows一般会自动安装openSSH客户端和服务端),执行命令：</p>
+<h5 id="实现远程连接服务器"><a href="#实现远程连接服务器" class="headerlink" title="实现远程连接服务器"></a>实现远程连接服务器</h5><h6 id="1-本地服务准备"><a href="#1-本地服务准备" class="headerlink" title="1.本地服务准备"></a>1.本地服务准备</h6><p>本地主机上打开windows terminal窗口(现在的windows一般会自动安装openSSH客户端和服务端),执行命令：</p>
 <pre class="line-numbers language-none"><code class="language-none">ssh -keygen -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>执行命令后会在<code>.ssh</code>文件下生成两个密钥，<code>id_rsa``id_rsa.pub</code>一个私钥一个公钥;实现远程连接服务器关键是把<strong>公钥</strong>存放到远程服务器端</p>
@@ -521,6 +521,9 @@
 <p>将本地传过来的密钥<strong>写入authorizd_keys</strong>中</p>
 <pre class="line-numbers language-none"><code class="language-none">cat ./home/xxx/id_rsa.pub &gt;&gt; ./.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h5 id="vscode免密登录"><a href="#vscode免密登录" class="headerlink" title="vscode免密登录"></a>vscode免密登录</h5><h6 id="1-准备插件SSH"><a href="#1-准备插件SSH" class="headerlink" title="1.准备插件SSH"></a>1.准备插件SSH</h6><p>在插件里搜索安装即可</p>
+<h6 id="2-修改本地config配置文件"><a href="#2-修改本地config配置文件" class="headerlink" title="2.修改本地config配置文件"></a>2.修改本地config配置文件</h6><p>本地config文件里面加入<strong>”IdentifyFile” ”C:\Users\VrShadow.ssh\id_rsa”</strong></p>
+<p>完成之后侧边导航栏会出现远程资源管理器图标，点击之后选择远程服务器时对应的端口下的分支用户，点击就会开启新的窗口(第一次会让你选择远程服务器的操作系统)，之后就会进入对应用户下的目录进行工作。</p>
 
                 
             </div>
@@ -1065,7 +1068,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">3.7k</span>
+                        class="white-color">3.9k</span>
             
             
             
