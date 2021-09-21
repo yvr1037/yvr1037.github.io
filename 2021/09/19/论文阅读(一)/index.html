@@ -509,7 +509,7 @@
 <h4 id="Attention机制加入"><a href="#Attention机制加入" class="headerlink" title="Attention机制加入"></a>Attention机制加入</h4><p>本paper提出的模型叫做<strong>RNNsearch</strong>：</p>
 <p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210920183014609.png" alt="image-20210920183014609"></p>
 <p>​    图中的右半部分是encoder，这一部分和RNNenc模型一样，重点在decoder部分和传统的会有巨大的差别；在t=0时刻，decoder的BiLSTM接受三个输入，第一个是初始状态s0(这个是随机初始化的，无论是训练阶段还是预测阶段都是随机)；第二个输入来源于emdedding后的向量；第三个输入比较复杂，也是新模型的核心创新点</p>
-<p>​    首先，随机初始化的s0和encoder输出的h1<del>h6各自做一次余弦相似度的计算(计算方式有很多种可以自己定义)，各自得到一个e1 ~ e6的值，对这个6个值进行一次softmax得到α1 ~ α6，和是1；将α1，α2，α3，α4，α5，α6看作是s0和h1</del>h6的相似度。然后α和h向量做一次元素乘积，得到的6个向量做一次元素的相加得到最终的向量。将这个向量当作0时刻BiLSTM的第三个输入。时刻0，BiLSTM就会有一个输出，时刻变为1，接下来的过程继续向后进行。</p>
+<p>​    首先，随机初始化的s0和encoder输出的h1 ~ h6各自做一次余弦相似度的计算(计算方式有很多种可以自己定义)，各自得到一个e1 ~ e6的值，对这个6个值进行一次softmax得到α1 ~ α6，和是1；将α1，α2，α3，α4，α5，α6看作是s0和h1 ~ h6的相似度。然后α和h向量做一次元素乘积，得到的6个向量做一次元素的相加得到最终的向量。将这个向量当作0时刻BiLSTM的第三个输入。时刻0，BiLSTM就会有一个输出，时刻变为1，接下来的过程继续向后进行。</p>
 
                 
             </div>
