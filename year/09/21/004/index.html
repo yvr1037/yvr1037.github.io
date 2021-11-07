@@ -6,11 +6,14 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Dian2021夏令营, 机器学习,深度学习">
+    <meta name="keywords" content="ssh远程连接服务器, 机器学习,深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY" />
-    <meta name="description" content="报名参加夏令营起初是想花时间研究AI机器学习领域的经典算法，然后做了dian的一个lab
-">
+    <meta name="description" content="​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:
+
+连接实验室网络后内网连接远程服务器功能
+配置本地密钥和远程服务器用户密钥使其免密钥功能
+2021/09/25更新：实现外网连接实验室服务器的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Dian2021夏令营 | yvr</title>
+    <title>ssh远程连接服务器 | yvr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -619,13 +622,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Dian2021夏令营
+                        ssh远程连接服务器
                     </div>
                 </div>
             </div>
@@ -737,16 +740,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/dian/" target="_blank">
-                                <span class="chip bg-color">dian</span>
+                            <a href="/tags/windows-terminal/" target="_blank">
+                                <span class="chip bg-color">windows terminal</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" target="_blank">
-                                <span class="chip bg-color">机器学习</span>
-                            </a>
-                        
-                            <a href="/tags/CNN%E7%AE%80%E6%98%93%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/" target="_blank">
-                                <span class="chip bg-color">CNN简易框架搭建</span>
+                            <a href="/tags/ssh/" target="_blank">
+                                <span class="chip bg-color">ssh</span>
                             </a>
                         
                     </div>
@@ -757,8 +756,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/AI/" class="post-category" target="_blank">
-                                AI
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/" class="post-category" target="_blank">
+                                搭建环境
                             </a>
                         
                     </div>
@@ -769,7 +768,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-11-06
+                    2021-09-21
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -783,14 +782,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        36
+                        596
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        1 Min
+                        2 Min
                     </div>
                     
                 
@@ -807,7 +806,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>报名参加夏令营起初是想花时间研究AI机器学习领域的经典算法，然后做了dian的一个<strong>lab</strong></p>
+                <p>​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:</p>
+<ul>
+<li>连接实验室网络后内网连接远程服务器功能</li>
+<li>配置本地密钥和远程服务器用户密钥使其免密钥功能</li>
+<li>2021/09/25更新：实现外网连接实验室服务器的功能</li>
+</ul>
+<h5 id="1-实现远程连接服务器"><a href="#1-实现远程连接服务器" class="headerlink" title="1.实现远程连接服务器"></a>1.实现远程连接服务器</h5><h6 id="1-本地服务准备"><a href="#1-本地服务准备" class="headerlink" title="1.本地服务准备"></a>1.本地服务准备</h6><p>本地主机上打开windows terminal窗口(现在的windows一般会自动安装openSSH客户端和服务端),执行命令：</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh -keygen -t rsa
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>执行命令后会在<code>.ssh</code>文件下生成两个密钥，<code>id_rsa</code>和<code>id_rsa.pub</code>一个私钥一个公钥;实现远程连接服务器关键是把<strong>公钥</strong>存放到远程服务器端</p>
+<h6 id="2-配置本地config文件"><a href="#2-配置本地config文件" class="headerlink" title="2.配置本地config文件"></a>2.配置本地config文件</h6><h6 id="3-将本地公钥上传至服务器"><a href="#3-将本地公钥上传至服务器" class="headerlink" title="3.将本地公钥上传至服务器"></a>3.将本地公钥上传至服务器</h6><p>在windows terminal下执行命令</p>
+<pre class="line-numbers language-none"><code class="language-none">scp C:\Users\VrShadow\.ssh\id_rsa.pub XXX@192.168.0.75:\home\xxx\
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>本地公钥拷贝至远程服务器[注意xxx更改为自己在远程服务器端分配的用户名！！！],此时传过来的公钥存在<code>./home/xxx</code>下</p>
+<h6 id="4-公钥写入授权文件"><a href="#4-公钥写入授权文件" class="headerlink" title="4.公钥写入授权文件"></a>4.公钥写入授权文件</h6><p>在远程服务器上执行命令</p>
+<pre class="line-numbers language-none"><code class="language-none">touch ./ssh/authorized_keys
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>远程服务器端这边用的是linux系统，所以先要创建文件<code>authorized_keys</code></p>
+<p>将本地传过来的密钥<strong>写入authorizd_keys</strong>中</p>
+<pre class="line-numbers language-none"><code class="language-none">cat ./home/xxx/id_rsa.pub >> ./.ssh/authorized_keys
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="2-vscode免密登录"><a href="#2-vscode免密登录" class="headerlink" title="2.vscode免密登录"></a>2.vscode免密登录</h5><h6 id="1-准备插件SSH"><a href="#1-准备插件SSH" class="headerlink" title="1.准备插件SSH"></a>1.准备插件SSH</h6><p>在插件里搜索安装即可</p>
+<h6 id="2-修改本地config配置文件"><a href="#2-修改本地config配置文件" class="headerlink" title="2.修改本地config配置文件"></a>2.修改本地config配置文件</h6><p>本地config文件里面加入<strong>”IdentifyFile” ”C:\Users\VrShadow.ssh\id_rsa”</strong></p>
+<p>完成之后侧边导航栏会出现远程资源管理器图标，点击之后选择远程服务器时对应的端口下的分支用户，点击就会开启新的窗口(第一次会让你选择远程服务器的操作系统)，之后就会进入对应用户下的目录进行工作。</p>
+<h5 id="3-外网远程连接"><a href="#3-外网远程连接" class="headerlink" title="3.外网远程连接"></a>3.外网远程连接</h5><p>自己的本地用户<code>.ssh</code>文件里面已经配置了<strong>config</strong>文件，已经配置了jump内网权限<br>命令行执行：</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh jumpnone
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>执行后需要远程服务器的密码：********</p>
+<p>输入密码后进行远程连接操作</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh username@远程服务器ip地址
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我写的比较粗糙,(偷个懒)可以参考我朋友的blog：</p>
+<blockquote>
+<p><a href="!https://lry89757.github.io/2021/09/24/linux-bi-ji/">朋友的博客</a></p>
+</blockquote>
 
             </div>
             <hr/>
@@ -958,7 +991,7 @@
                     </span>
                     <a href="http://yvr1037.github.io" class="b-link-green">yvr</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/11/06/002/" class="b-link-green">Dian2021夏令营</a>
+                    <a href="/year/09/21/004/" class="b-link-green">ssh远程连接服务器</a>
                 </p>
             </div>
 
@@ -981,7 +1014,7 @@
         repo: 'shw2018.github.io',
         owner: 'shw2018',
         admin: ["shw2018"],
-        id: '2021/11/06/002/',
+        id: 'year/09/21/004/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1304,26 +1337,37 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/11/06/Faster%20R-CNN/">
+                <a href="/year/09/24/005/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Faster-RCNN">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="一些容易忘记的命令">
                         
-                        <span class="card-title">Faster-RCNN</span>
+                        <span class="card-title">一些容易忘记的命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Perface:在🦌同学的感染下，笔者最近也学习了目标检测方向的相关内容，看的第一篇论文是Faster R-CNN：Towards Rel-Time Objection Dection with Region Proposal Netwo
+                            之前用过一段时间github desktop客户端，傻瓜式操作一步到位，最近简单看了下使用git命令行push本地文件到github的过程
+
+git
+
+本地文件已经写好并且在一个文件夹里面，以下步骤是上传到远程已经创建好的repositor
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-06
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-24
                         </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1331,12 +1375,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cv/" target="_blank">
-                        <span class="chip bg-color">cv</span>
-                    </a>
-                    
-                    <a href="/tags/RCNN/" target="_blank">
-                        <span class="chip bg-color">RCNN</span>
+                    <a href="/tags/git/" target="_blank">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -1350,30 +1390,33 @@
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/27/seq2seq_translation_tutorial/">
+                <a href="/year/09/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB(%E4%B8%80)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="SeqToSeq_Translation(Attention)">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="论文阅读一:Attention Mechanism">
                         
-                        <span class="card-title">SeqToSeq_Translation(Attention)</span>
+                        <span class="card-title">论文阅读一:Attention Mechanism</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            %matplotlib inline
-
-NLP From Scratch: Translation with a Sequence to Sequence Network and Attention
-
-Author: Sean Robert
+                            Abstract &amp;&amp; Introduction​    这几天阅读了一篇较早提出Attention machanism的论文Neural Machine Translation by Jointly Learning to
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-19
                             </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BA%E6%96%87/" class="post-category" target="_blank">
+                                    论文
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1381,8 +1424,12 @@ Author: Sean Robert
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0/" target="_blank">
-                        <span class="chip bg-color">论文复现</span>
+                    <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" target="_blank">
+                        <span class="chip bg-color">注意力机制</span>
+                    </a>
+                    
+                    <a href="/tags/nlp/" target="_blank">
+                        <span class="chip bg-color">nlp</span>
                     </a>
                     
                 </div>

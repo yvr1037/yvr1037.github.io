@@ -6,14 +6,10 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="ssh远程连接服务器, 机器学习,深度学习">
+    <meta name="keywords" content="论文阅读一:Attention Mechanism, 机器学习,深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY" />
-    <meta name="description" content="​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:
-
-连接实验室网络后内网连接远程服务器功能
-配置本地密钥和远程服务器用户密钥使其免密钥功能
-2021/09/25更新：实现外网连接实验室服务器的">
+    <meta name="description" content="Abstract &amp;amp;&amp;amp; Introduction​    这几天阅读了一篇较早提出Attention machanism的论文Neural Machine Translation by Jointly Learning to">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ssh远程连接服务器 | yvr</title>
+    <title>论文阅读一:Attention Mechanism | yvr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -628,7 +624,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ssh远程连接服务器
+                        论文阅读一:Attention Mechanism
                     </div>
                 </div>
             </div>
@@ -740,12 +736,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/windows-terminal/" target="_blank">
-                                <span class="chip bg-color">windows terminal</span>
+                            <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" target="_blank">
+                                <span class="chip bg-color">注意力机制</span>
                             </a>
                         
-                            <a href="/tags/ssh/" target="_blank">
-                                <span class="chip bg-color">ssh</span>
+                            <a href="/tags/nlp/" target="_blank">
+                                <span class="chip bg-color">nlp</span>
                             </a>
                         
                     </div>
@@ -756,8 +752,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/" class="post-category" target="_blank">
-                                搭建环境
+                            <a href="/categories/%E8%AE%BA%E6%96%87/" class="post-category" target="_blank">
+                                论文
                             </a>
                         
                     </div>
@@ -768,7 +764,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-09-21
+                    2021-09-19
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -782,14 +778,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        596
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        2 Min
+                        3 Min
                     </div>
                     
                 
@@ -806,41 +802,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:</p>
-<ul>
-<li>连接实验室网络后内网连接远程服务器功能</li>
-<li>配置本地密钥和远程服务器用户密钥使其免密钥功能</li>
-<li>2021/09/25更新：实现外网连接实验室服务器的功能</li>
-</ul>
-<h5 id="1-实现远程连接服务器"><a href="#1-实现远程连接服务器" class="headerlink" title="1.实现远程连接服务器"></a>1.实现远程连接服务器</h5><h6 id="1-本地服务准备"><a href="#1-本地服务准备" class="headerlink" title="1.本地服务准备"></a>1.本地服务准备</h6><p>本地主机上打开windows terminal窗口(现在的windows一般会自动安装openSSH客户端和服务端),执行命令：</p>
-<pre class="line-numbers language-none"><code class="language-none">ssh -keygen -t rsa
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>执行命令后会在<code>.ssh</code>文件下生成两个密钥，<code>id_rsa</code>和<code>id_rsa.pub</code>一个私钥一个公钥;实现远程连接服务器关键是把<strong>公钥</strong>存放到远程服务器端</p>
-<h6 id="2-配置本地config文件"><a href="#2-配置本地config文件" class="headerlink" title="2.配置本地config文件"></a>2.配置本地config文件</h6><h6 id="3-将本地公钥上传至服务器"><a href="#3-将本地公钥上传至服务器" class="headerlink" title="3.将本地公钥上传至服务器"></a>3.将本地公钥上传至服务器</h6><p>在windows terminal下执行命令</p>
-<pre class="line-numbers language-none"><code class="language-none">scp C:\Users\VrShadow\.ssh\id_rsa.pub XXX@192.168.0.75:\home\xxx\
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>本地公钥拷贝至远程服务器[注意xxx更改为自己在远程服务器端分配的用户名！！！],此时传过来的公钥存在<code>./home/xxx</code>下</p>
-<h6 id="4-公钥写入授权文件"><a href="#4-公钥写入授权文件" class="headerlink" title="4.公钥写入授权文件"></a>4.公钥写入授权文件</h6><p>在远程服务器上执行命令</p>
-<pre class="line-numbers language-none"><code class="language-none">touch ./ssh/authorized_keys
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>远程服务器端这边用的是linux系统，所以先要创建文件<code>authorized_keys</code></p>
-<p>将本地传过来的密钥<strong>写入authorizd_keys</strong>中</p>
-<pre class="line-numbers language-none"><code class="language-none">cat ./home/xxx/id_rsa.pub >> ./.ssh/authorized_keys
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h5 id="2-vscode免密登录"><a href="#2-vscode免密登录" class="headerlink" title="2.vscode免密登录"></a>2.vscode免密登录</h5><h6 id="1-准备插件SSH"><a href="#1-准备插件SSH" class="headerlink" title="1.准备插件SSH"></a>1.准备插件SSH</h6><p>在插件里搜索安装即可</p>
-<h6 id="2-修改本地config配置文件"><a href="#2-修改本地config配置文件" class="headerlink" title="2.修改本地config配置文件"></a>2.修改本地config配置文件</h6><p>本地config文件里面加入<strong>”IdentifyFile” ”C:\Users\VrShadow.ssh\id_rsa”</strong></p>
-<p>完成之后侧边导航栏会出现远程资源管理器图标，点击之后选择远程服务器时对应的端口下的分支用户，点击就会开启新的窗口(第一次会让你选择远程服务器的操作系统)，之后就会进入对应用户下的目录进行工作。</p>
-<h5 id="3-外网远程连接"><a href="#3-外网远程连接" class="headerlink" title="3.外网远程连接"></a>3.外网远程连接</h5><p>自己的本地用户<code>.ssh</code>文件里面已经配置了<strong>config</strong>文件，已经配置了jump内网权限<br>命令行执行：</p>
-<pre class="line-numbers language-none"><code class="language-none">ssh jumpnone
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>执行后需要远程服务器的密码：********</p>
-<p>输入密码后进行远程连接操作</p>
-<pre class="line-numbers language-none"><code class="language-none">ssh username@远程服务器ip地址
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>我写的比较粗糙,(偷个懒)可以参考我朋友的blog：</p>
-<blockquote>
-<p><a href="!https://lry89757.github.io/2021/09/24/linux-bi-ji/">朋友的博客</a></p>
-</blockquote>
+                <h4 id="Abstract-amp-amp-Introduction"><a href="#Abstract-amp-amp-Introduction" class="headerlink" title="Abstract &amp;&amp; Introduction"></a>Abstract &amp;&amp; Introduction</h4><p>​    这几天阅读了一篇较早提出Attention machanism的论文<a href="!https://arxiv.org/abs/1409.0473">Neural Machine Translation by Jointly Learning to Align and Translate (arxiv.org)</a>,这篇论文将注意力机制应用在神经网络翻译中，论文的思路从传统NMT(Neural Machine Translation)系统的缺陷说起，针对其进行改进，最后进行了定量和定性分析.</p>
+<p>​    首先我们要了解经典的Sea2Seq模型是如何进行翻译的：整体模型采用Encoder-Decoder进行分析，将输入的序列经过Encoder处理，压缩成一个Fixed-length Vector；在Decoder阶段，将这个向量的信息还原成一个序列完成翻译任务。基于RNN的Seq2Seq模型主要由两篇文章介绍，只是采用了不同的RNN模型。Ilya Sutskever等人2014年在论文《Sequence to Sequence Learning with Neural Networks》中使用LSTM来搭建Seq2Seq模型。随后，2015年，Kyunghyun Cho等人在论文《Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation》提出了基于GRU的Seq2Seq模型。想要解决的主要问题就是如何把机器翻译中，变长的输入X映射到一个变长输出Y。而这篇论文提出一种新的方法，这个方法也是基于<code>encoder-decoder</code>的，与之前的<code>encoder-decoder</code>模型不同的是，每次在翻译一个单词的时候，模型会自动搜寻该单词与源句子哪些单词有关联，并将这种关联的强度进行数字化表示(在模型中就是权重)，并且训练得出这种方法可以解决句子翻译不准的问题。</p>
+<h4 id="传统RNN"><a href="#传统RNN" class="headerlink" title="传统RNN"></a>传统RNN</h4><p>​    大部分的神经机器翻译都是基于<code>encoder-decoder</code>框架的并且都会将源语言句子序列压缩成一个固定的向量，然后传递给decoder。传统的RNN Encoder-Decoder模型在训练阶段时候，会使模型去最大化源语言翻译成目标语言的条件概率。当模型训练好之后，当代翻译的源语言句子放入到模型中后，模型会自动计算最大目标句子的概率并且将这个句子当作是翻译后的句子。简单介绍以下传统的RNN:</p>
+<p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210920180508294.png" alt="image-20210920180508294"></p>
+<p>上图中<code>C</code>的左侧是<code>Encoder</code>,右侧是<code>Decoder</code>,”C”是待翻译语句的语义信息；输入一个句子的时候会经过Encoder，Encoder讲这句话进行编码，Encoder用到的模型是RNN，编码结束以后将最后一个时刻RNN的隐层的输出当作输入的这句话的”语义压缩”。然后解码器每产生一个翻译后的英文单词的时候，都会利用<strong>C</strong>并且还会接受输入t时刻的上一个隐藏向量<strong>s</strong>。这个时刻的输出端就会产生第一个单词(这里使用了softmax函数，输出层是一个词典大小维度的向量)，哪个维度的值最大就取哪个维度所对应的单词。大家可以明白的是训练阶段，Encoder和Decoder不可能立马产生目标单词，而是产生一个预测结果，训练的目的就是不断优化参数。</p>
+<h4 id="Attention机制加入"><a href="#Attention机制加入" class="headerlink" title="Attention机制加入"></a>Attention机制加入</h4><p>本paper提出的模型叫做<strong>RNNsearch</strong>：</p>
+<p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210920183014609.png" alt="image-20210920183014609"></p>
+<p>​    图中的右半部分是encoder，这一部分和RNNenc模型一样，重点在decoder部分和传统的会有巨大的差别；在t=0时刻，decoder的BiLSTM接受三个输入，第一个是初始状态s0(这个是随机初始化的，无论是训练阶段还是预测阶段都是随机)；第二个输入来源于emdedding后的向量；第三个输入比较复杂，也是新模型的核心创新点</p>
+<p>​    首先，随机初 算(计算方式有很多种可以自己定义)，各自得到一个e1 ~ e6的值，对这个6个值进行一次softmax得到α1 ~ α6，和是1；将α1，α2，α3，α4，α5，α6看作是s0和h1 ~ h6的相似度。然后α和h向量做一次元素乘积，得到的6个向量做一次元素的相加得到最终的向量。将这个向量当作0时刻BiLSTM的第三个输入。时刻0，BiLSTM就会有一个输出，时刻变为1，接下来的过程继续向后进行。</p>
+<p>[pyotorch-tutorial](<img src="https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html#" alt="NLP From Scratch: Translation with a Sequence to Sequence Network and Attention — PyTorch Tutorials 1.9.1+cu102 documentation">)官网给出了Seq2Seq(Attention)后的模型，基本实现了此篇论文的创新点。</p>
 
             </div>
             <hr/>
@@ -991,7 +962,7 @@
                     </span>
                     <a href="http://yvr1037.github.io" class="b-link-green">yvr</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/09/21/004/" class="b-link-green">ssh远程连接服务器</a>
+                    <a href="/year/09/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB(%E4%B8%80)/" class="b-link-green">论文阅读一:Attention Mechanism</a>
                 </p>
             </div>
 
@@ -1014,7 +985,7 @@
         repo: 'shw2018.github.io',
         owner: 'shw2018',
         admin: ["shw2018"],
-        id: '2021/09/21/004/',
+        id: 'year/09/19/论文阅读(一)/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1337,35 +1308,35 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/09/24/005/">
+                <a href="/year/09/21/004/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="一些容易忘记的命令">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="ssh远程连接服务器">
                         
-                        <span class="card-title">一些容易忘记的命令</span>
+                        <span class="card-title">ssh远程连接服务器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            之前用过一段时间github desktop客户端，傻瓜式操作一步到位，最近简单看了下使用git命令行push本地文件到github的过程
+                            ​    本文简单介绍ssh远程连接实验室服务器的步骤，踩坑许多，很多原理依旧不懂，但最后实现:
 
-git
-
-本地文件已经写好并且在一个文件夹里面，以下步骤是上传到远程已经创建好的repositor
+连接实验室网络后内网连接远程服务器功能
+配置本地密钥和远程服务器用户密钥使其免密钥功能
+2021/09/25更新：实现外网连接实验室服务器的
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-24
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category" target="_blank">
-                                    工具
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/" class="post-category" target="_blank">
+                                    搭建环境
                                 </a>
                             
                             
@@ -1375,8 +1346,12 @@ git
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/" target="_blank">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/windows-terminal/" target="_blank">
+                        <span class="chip bg-color">windows terminal</span>
+                    </a>
+                    
+                    <a href="/tags/ssh/" target="_blank">
+                        <span class="chip bg-color">ssh</span>
                     </a>
                     
                 </div>
@@ -1390,31 +1365,37 @@ git
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB(%E4%B8%80)/">
+                <a href="/year/09/17/003/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="论文阅读一:Attention Mechanism">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="基础算法而已">
                         
-                        <span class="card-title">论文阅读一:Attention Mechanism</span>
+                        <span class="card-title">基础算法而已</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Abstract &amp;&amp; Introduction​    这几天阅读了一篇较早提出Attention machanism的论文Neural Machine Translation by Jointly Learning to
+                            算法入门：啊哈算法 算法图解 大话数据结构
+算法进阶：cf 白书 紫书 蓝书
+第一章 基础算法基础算法(一)排序
+含义:排序是指将一个无序序列按照某个规则进行有序排列(以下排序均实现的是从小到大排序)
+
+简单排序
+冒泡排序的本质在于==交换
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%BA%E6%96%87/" class="post-category" target="_blank">
-                                    论文
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
+                                    算法
                                 </a>
                             
                             
@@ -1424,12 +1405,12 @@ git
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" target="_blank">
-                        <span class="chip bg-color">注意力机制</span>
+                    <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" target="_blank">
+                        <span class="chip bg-color">排序算法</span>
                     </a>
                     
-                    <a href="/tags/nlp/" target="_blank">
-                        <span class="chip bg-color">nlp</span>
+                    <a href="/tags/acwing/" target="_blank">
+                        <span class="chip bg-color">acwing</span>
                     </a>
                     
                 </div>

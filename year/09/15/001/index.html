@@ -6,10 +6,11 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Faster-RCNN, 机器学习,深度学习">
+    <meta name="keywords" content="第一篇，表达点看法吧, 机器学习,深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY" />
-    <meta name="description" content="Perface:在🦌同学的感染下，笔者最近也学习了目标检测方向的相关内容，看的第一篇论文是Faster R-CNN：Towards Rel-Time Objection Dection with Region Proposal Netwo">
+    <meta name="description" content="😄😆😆值得记录一下
+这是我的第一篇博文，花了很长时间来进行操作，在网上搜索的教程参差不齐，也同样会出现各种各样的问题，比如nodejs版本过高与hexo不兼容问题，我觉得还是有问题还是要多和其他人沟通，另外对主题的设置可以按照自己的风">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Faster-RCNN | yvr</title>
+    <title>第一篇，表达点看法吧 | yvr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -618,13 +619,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Faster-RCNN
+                        第一篇，表达点看法吧
                     </div>
                 </div>
             </div>
@@ -736,12 +737,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/cv/" target="_blank">
-                                <span class="chip bg-color">cv</span>
+                            <a href="/tags/%E5%8D%9A%E6%96%87/" target="_blank">
+                                <span class="chip bg-color">博文</span>
                             </a>
                         
-                            <a href="/tags/RCNN/" target="_blank">
-                                <span class="chip bg-color">RCNN</span>
+                            <a href="/tags/%E6%B5%8B%E8%AF%95/" target="_blank">
+                                <span class="chip bg-color">测试</span>
+                            </a>
+                        
+                            <a href="/tags/whatever/" target="_blank">
+                                <span class="chip bg-color">whatever</span>
                             </a>
                         
                     </div>
@@ -749,13 +754,22 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%B5%8B%E8%AF%95%E7%9A%84%E5%AD%90%E5%88%86%E7%B1%BB/" class="post-category" target="_blank">
+                                测试，测试的子分类
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
             
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-11-06
+                    2021-09-15
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -769,14 +783,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        2.5k
+                        700
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        9 Min
+                        2 Min
                     </div>
                     
                 
@@ -793,92 +807,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="Perface"><a href="#Perface" class="headerlink" title="Perface:"></a>Perface:</h5><p>在🦌同学的感染下，笔者最近也学习了目标检测方向的相关内容，看的第一篇论文是<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1504.08083#">Faster R-CNN：Towards Rel-Time Objection Dection with Region Proposal Networks</a>，里面涉及到很多前置模型需要了解结构，在这里分享一点笔记</p>
-<h5 id="目标检测背景"><a href="#目标检测背景" class="headerlink" title="目标检测背景"></a>目标检测背景</h5><p>目标检测是很多计算机视觉人物的基础，目前主流的目标检测的算法主要基于深度学习模型可以分为两大类</p>
-<ol>
-<li>one-stage检测算法,这种算法直接产生物体的类别概率和坐标位置,不需要直接产生候选区域.比如说YOLO和SSD</li>
-<li>two-stage检测算法,这是将检测问题划分为两个阶段,首先是产生候选区域,然后对候选区域分类;典型算法是R-CNN系列,faster rcnn就是基于<strong>region proposal</strong>(候选区域)</li>
-</ol>
-<h5 id="backbone-network"><a href="#backbone-network" class="headerlink" title="backbone network"></a>backbone network</h5><p><strong>Faster R-CNN</strong>使用的主干网络是VGG-16,在论文中称主干网络时<strong>backbone network</strong>,主干网络就是用来<strong>feature extraction</strong>,当然这个不是一成不变的,可以替换,比如现在也同样流行使用<strong>Resnet</strong>,再如<strong>CornerNet</strong>算法中使用的backbone network是Hourglass Network.<br>关于VGG-16可以参考<a target="_blank" rel="noopener" href="http://zh.gluon.ai/chapter_convolutional-neural-networks/vgg.html">VGG介绍</a>,16的含义是含有参数有16层,分别是13个卷积层+3个全连接层</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027195132710.png" alt="image-20211027195132710" style="zoom:65%;">
-
-<p>图来自网络</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027195339689.png" alt="image-20211027195339689" style="zoom:60%;">
-
-<h5 id="Faster-R-CNN算法步骤"><a href="#Faster-R-CNN算法步骤" class="headerlink" title="Faster R-CNN算法步骤"></a>Faster R-CNN算法步骤</h5><p>这部分是为了理解Faster R-CNN,总体描述下算法的整个过程以便后期做细节分析</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027195754031.png" alt="image-20211027195754031" style="zoom:50%;">
-
-<p>大致流程是:将整张图片输入CNN层,得到feature map,卷积特征输入到**RPN(Region Proposal Network)**得到候选框的特征信息,对候选框中提取的特征使用分类器判别是否属于一个特定类别,对于属于某一特征的候选框用回归器进一步调整其位置.</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027200749657.png" alt="image-20211027200749657" style="zoom:50%;">
-
-<p>Faster R-CNN可以看作RPN和Fast R-CNN模型的结合,即Faster R-CNN = RPN + Fast R-CNN.下面介绍每一步骤的输入输出的细节.</p>
+                <p><span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>值得记录一下</p>
+<p>这是我的第一篇博文，花了很长时间来进行操作，在网上搜索的教程参差不齐，也同样会出现各种各样的问题，比如nodejs版本过高与hexo不兼容问题，我觉得还是有问题还是要多和其他人沟通，另外对主题的设置可以按照自己的风格来，但是这就需要对web知识有一定的了解，对排版有自己的理解才可以。<br>在我看来，博客更加注重的应该是内容，以及养成记录日记的习惯，对自己每个阶段的学习有一个适当的总结，可以让自己计划更加明确。<br>所以我就简单介绍hexo+github.io搭建博客过程中重要的点吧(我是用的主题是matery)</p>
+<h4 id="本地配置文件"><a href="#本地配置文件" class="headerlink" title="本地配置文件"></a>本地配置文件</h4><p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210916214915453.png" alt="image-20210916214915453"></p>
 <ul>
-<li>首先通过预训练模型训练得到Conv layers(这个conv layer实际上就是VGG-16)能够接收整张图片并提取特征图feature maps,这个feature map是在conv层之后获得的特征.</li>
-<li>feature map被共享之后用于后续的RPN和Rol池化层<ul>
-<li>BPN层:BPN网络用于生成region proposals.该层通过softmax判断anchors属于前景(foreground)还是背景(background),再利用边框回归修正anchors,获得精确的proposals </li>
-<li>RoI Pooling层:该层收集输入的feature map和proposals综合这些信息提取proposal feature map,进入到后面可利用全连接操作层进行目标识别和定位</li>
-</ul>
+<li><p><strong>_config.yml</strong>：</p>
+<p>网站<strong>站点配置文件</strong>，又叫根目录站点配置文件，在这个文件里面可以配置大部分的参数</p>
 </li>
-<li>最后的classifier会将Roi Pooling层形成固定大小的feature map进行全连接操作,利用softmax进行具体类别的分类,同时利用L1 loss完成bounding box regression回归操作获得物体的准确位置</li>
+<li><p><strong>scaffolds</strong>:</p>
+<p>此文件夹会放一些默认的文件，用来当作创建博文的模板md文件，hexo会根据scaffold来建立文件。模板是指新建的md文件会默认放入模板文件的初始内容</p>
+</li>
+<li><p><strong>public</strong>：</p>
+<p>这个文件的内容最终都会push到github仓库中</p>
+</li>
+<li><p><strong>source</strong>:</p>
+<p>这个文件夹是存放用户资源的地方，除了<code>_posts</code>文件夹之外，开头命名为_(下划线的文件/文件夹以及隐藏的文件都会被忽略)。markdown和html文件都会被解析并放到<strong>public</strong>文件夹里面，而其他文件会被拷贝到public文件夹。</p>
+</li>
+<li><p>**为github仓库添加readme</p>
+<p>既然<code>source</code>文件夹中的内容会被全部推送到public文件夹，public文件夹中的内容最终又会被push到github仓库，所以如果想要为github仓库添加readme.md，只要在source文件夹中创建就好了。最后<strong>部署</strong>到github就有readme了。但是会发现，README.md文件部署的时候会被解析成html文件，显示的是html代码，不是我们想要的文档内容。</p>
+<p><strong>解决办法</strong>：将在source文件夹新建的README.md重命名为REMADE.MDWN，在重新部署到github。(source文件夹中，.md会被解析为html。并放到public文件夹被push到github，但.MDWN不会被解析)</p>
+</li>
 </ul>
-<h5 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h5><h6 id="1-RPN"><a href="#1-RPN" class="headerlink" title="1.RPN"></a>1.RPN</h6><p>之前的R-CNN和Fast R-CNN都是采用可选择性搜索(SS)来产生候选框的,但是这种方法特别耗时;Faster R-CNN最大的亮点是抛弃SS,采用RPN生成候选框.<br><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027204057233.png" alt="image-20211027204057233" style="zoom:67%;"></p>
-<p>说明:</p>
-<ol>
-<li>Conv feature map:VGG-16网络最后一个卷积层输出的feature map</li>
-<li>Sliding window:滑动窗口实际上就是3*3的卷积核,滑窗只要选取所有可能的区域并没有额外的作用</li>
-<li>K anchor boxes:在每个sliding window的点上初始化的参考区域(论文中k=9)就是9个矩形框</li>
-<li>Intermediate layer:中间层，256-d是中间层的维度(论文中谁用ZF网络就是256维,VGG就是512维)</li>
-<li>Cls layer:分类层,预测proposal的anchor对应的proposal的(x,y,w,h)</li>
-<li>2k scores:2k个分数(18个)</li>
-<li>Reg layer:回归层,判断该proposal是前景还是背景</li>
-<li>4k coordinates:4k坐标(36个)</li>
-</ol>
-<ul>
-<li>RPN的输入是卷积特征图,输出是图片生成的proposals,RPN通过一个滑动窗口连接在最后一个卷积层的feature map上,生成一个长度256的全连接特征</li>
-<li>这个全连接层特征分别送入两个全连接层一个是分类层,用于分类检测;一个是回归层,用于回归;对于每个滑动窗口位置一般设置k(论文中k=9)个不同大小或者比例的anchors这意味着每个滑窗覆盖的位置就会预测9哥候选区域<br><strong>分类层</strong>:每个anchor输出两个预测值:anchor是背景(background,非object)的score和anchor是前景(foreground,object)的score<br><strong>回归层</strong>:输出4k(4*9=36)个坐标值表示每个候选区域的位置(x,y,w,h)</li>
-</ul>
-<p>也就是说我么是通过这些特征图应用滑动窗口加anchor机制进行目标区域判定和分类的,这里的滑窗加anchor机制功能类似于fast rcnn的selective search生成proposals的作用,而我们是通过RPN生成proposals.RPN就是一个卷积层 + relu +左右两个层(cls layer和reg layer)的小型网络</p>
-<h6 id="2-anchor"><a href="#2-anchor" class="headerlink" title="2.anchor"></a>2.anchor</h6><p>论文内容:The k proposals are parameterized relative to k reference boxes, which we call anchors;可以理解为锚点位于之前说的3 * 3的滑窗中心处,就是因为有多个anchor.这9个anchor是作者设置的,论文中scale=[128,256,512],长宽比[1:1,1:2,2:1]有9种；自己可以根据目标的特点做出不同的设计;对于一幅 w * h的feature map一共有w * h * k个锚点.</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027213420072.png" alt="image-20211027213420072" style="zoom:50%;">
-
-<h6 id="3-VGG提取特征"><a href="#3-VGG提取特征" class="headerlink" title="3.VGG提取特征"></a>3.VGG提取特征</h6><p>VGG的网络流程图:</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027213725540.png" alt="image-20211027213725540" style="zoom:67%;">
-
-<p>每个卷积层利用前面网络信息生成抽象描述:<br>第一层学习边缘edges信息；<br>第二层:学习边缘edges中图案patterns以学习更加复杂的形状信息；最终得到卷积特征图其空间维度(分辨率)比原图小了很多但更深；<br>特征图的width和height由于卷积层间的池化层而降低,而depth由于卷积层学习的filters数量而增加.</p>
-<h6 id="4-ROI-pooling"><a href="#4-ROI-pooling" class="headerlink" title="4.ROI pooling"></a>4.ROI pooling</h6><p>ROI就是region of interest指的是感兴趣区域;如果是原图，roi就是目标，如果是featuremap，roi就是特征图像目标的特征了，roi在这里就是经过RPN网络得到的，总之就是一个框。pooling就是池化。所以ROI Pooling就是Pooling的一种，只是是针对于Rois的pooling操作而已。RPN 处理后，可以得到一堆没有 class score 的 object proposals.待处理问题为：如何利用这些proposals分类.Roi pooling层的过程就是为了将不同输入尺寸的feature map（ROI）抠出来，然后resize到统一的大小.</p>
-<p>ROI pooling层的输入:</p>
-<ol>
-<li>特征图features map(这个特征图就是cnn卷积出来以后用于共享的那个特征图)</li>
-<li>roi信息:(就是RPN网络的输出,一个表示所有ROI的N*5矩阵,N表示ROI的数目;第一列表示图像index,其余四列表示其余的左上角和右下角坐标,坐标信息是对应原图中的绝对坐标)</li>
-</ol>
-<p>ROI pooling层的过程:</p>
-<p>首先将RPN中得到的原图中roi信息映射到feature map上按原图与featuremap的比例缩小roi坐标就行了），然后经过最大池化，池化到固定大小w×h。但这个pooling不是一般的Pooling，而是将区域等分，然后取每一小块的最大值，最后才能得到固定尺寸的roi。</p>
-<p>也就是：</p>
-<p>根据输入的image，将Roi映射到feature map对应的位置；<br>将映射后的区域划分为相同大小的sections（sections数量和输出的维度相同）；<br>对每个section进行max pooling操作；<br>ROI pooling层的输出：</p>
-<p>结果是，由一组大小各异的矩形，我们快速获取到具有固定大小的相应特征图。值得注意的是，RoI pooling 输出的维度实际上并不取决于输入特征图的大小，也不取决于区域提案的大小。这完全取决于我们将区域分成几部分。也就是，batch个roi矩阵，每一个roi矩阵为：通道数xWxH,也就是从selective search得到batch个roi，然后映射为固定大小。</p>
-<h6 id="5-NMS"><a href="#5-NMS" class="headerlink" title="5.NMS"></a>5.NMS</h6><p>NMS（Non Maximum Suppression，非极大值抑制）用于后期的物体冗余边界框去除，因为目标检测最终一个目标只需要一个框，所以要把多余的框干掉，留下最准确的那个。</p>
-<p>NMS的输入：</p>
-<p>检测到的Boxes(同一个物体可能被检测到很多Boxes，每个box均有分类score)</p>
-<p>NMS的输出：</p>
-<p>最优的Box.</p>
-<h6 id="6-FC-layer"><a href="#6-FC-layer" class="headerlink" title="6.FC layer"></a>6.FC layer</h6><p>经过roi pooling层之后，batch_size=300, proposal feature map的大小是7×7,512-d,对特征图进行全连接，参照下图，最后同样利用Softmax Loss和L1 Loss完成分类和定位。</p>
-<p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211027220232527.png" alt="image-20211027220232527"></p>
-<p>通过全连接层与softmax计算每个region proposal具体属于哪个类别（如人，马，车等），输出cls_prob概率向量；同时再次利用bounding box regression获得每个region proposal的位置偏移量bbox_pred，用于回归获得更加精确的目标检测框</p>
-<p>即从PoI Pooling获取到7x7大小的proposal feature maps后，通过全连接主要做了：</p>
-<p>通过全连接和softmax对region proposals进行具体类别的分类；</p>
-<p>再次对region proposals进行bounding box regression，获取更高精度的rectangle box。</p>
-<h5 id="主要部分"><a href="#主要部分" class="headerlink" title="主要部分"></a>主要部分</h5><p><strong>Faster</strong> <strong>RCNN</strong>其实可以分为四部分主要内容</p>
-<h6 id="1-Conv-Layer"><a href="#1-Conv-Layer" class="headerlink" title="1.Conv Layer"></a>1.Conv Layer</h6><p>作为一种CNN目标检测方法,Faster RCNN首先使用一组基础的cnn+relu+pooling层提取image的feature map,这个feature map被共享用用于后续RPN层和全连接层</p>
-<h6 id="2-Region-Proposal-NetWorks"><a href="#2-Region-Proposal-NetWorks" class="headerlink" title="2.Region Proposal NetWorks"></a>2.Region Proposal NetWorks</h6><p>RPN网络用于生成region proposals,该层通过softmax判断anchors属于positive还是negative,再利用bounding</p>
-<p>box regression修正anchors获得精确的proposals</p>
-<h6 id="3-Roi-Pooling"><a href="#3-Roi-Pooling" class="headerlink" title="3.Roi Pooling"></a>3.Roi Pooling</h6><p>该层手机输入的feature map和proposals,综合这些信息之后提取proposals,综合这些信息提取proposals feature maps送入后续全连接层判定目标类别</p>
-<h6 id="4-Classfication"><a href="#4-Classfication" class="headerlink" title="4.Classfication"></a>4.Classfication</h6><p>利用proposals feature map计算proposals的类别同时再次bounding box regression获得检测框最终的精确位置</p>
-<img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20211028212022996.png" alt="image-20211028212022996" style="zoom:67%;">
-
-<p>上图展示了python版本中的VGG16模型中的faster rcnn的网络结构可以清晰的看到该网络对于一幅任意大小的P*Q的图像:</p>
-<ul>
-<li>首先固定至大小M×N然后将M×N图像送入网络;</li>
-<li>而Conv layer</li>
+<h4 id="一些常用的Hexo命令"><a href="#一些常用的Hexo命令" class="headerlink" title="一些常用的Hexo命令"></a>一些常用的Hexo命令</h4><ul>
+<li><p>常用命令</p>
+<pre><code>hexo new "postName" #新建博文
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，’crtl+c'关闭server）
+hexo deploy #部署到github
+hexo help #查看帮助
+hexo version #查看版本
+</code></pre>
+</li>
+<li><p>缩写</p>
+<pre><code>hexo n == hexo new
+hexo g == hexo generate
+hexo s == hexo server
+hexo d == hexo deploy
+</code></pre>
+</li>
+<li><p>组合命令</p>
+<pre><code>hexo s -g #生成并本地预览
+hexo d -g #生成并部署到云端
+</code></pre>
+</li>
 </ul>
 
             </div>
@@ -1030,7 +1001,7 @@
                     </span>
                     <a href="http://yvr1037.github.io" class="b-link-green">yvr</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/11/06/Faster%20R-CNN/" class="b-link-green">Faster-RCNN</a>
+                    <a href="/year/09/15/001/" class="b-link-green">第一篇，表达点看法吧</a>
                 </p>
             </div>
 
@@ -1053,7 +1024,7 @@
         repo: 'shw2018.github.io',
         owner: 'shw2018',
         admin: ["shw2018"],
-        id: '2021/11/06/Faster R-CNN/',
+        id: 'year/09/15/001/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1372,45 +1343,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/11/06/Faster%20R-CNN/">
+                <a href="/year/09/17/003/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Faster-RCNN">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="基础算法而已">
                         
-                        <span class="card-title">Faster-RCNN</span>
+                        <span class="card-title">基础算法而已</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Perface:在🦌同学的感染下，笔者最近也学习了目标检测方向的相关内容，看的第一篇论文是Faster R-CNN：Towards Rel-Time Objection Dection with Region Proposal Netwo
+                            算法入门：啊哈算法 算法图解 大话数据结构
+算法进阶：cf 白书 紫书 蓝书
+第一章 基础算法基础算法(一)排序
+含义:排序是指将一个无序序列按照某个规则进行有序排列(以下排序均实现的是从小到大排序)
+
+简单排序
+冒泡排序的本质在于==交换
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-17
+                        </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
+                                    算法
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cv/" target="_blank">
-                        <span class="chip bg-color">cv</span>
+                    <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" target="_blank">
+                        <span class="chip bg-color">排序算法</span>
                     </a>
                     
-                    <a href="/tags/RCNN/" target="_blank">
-                        <span class="chip bg-color">RCNN</span>
+                    <a href="/tags/acwing/" target="_blank">
+                        <span class="chip bg-color">acwing</span>
                     </a>
                     
                 </div>
@@ -1424,53 +1406,29 @@
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/06/002/">
+                <a href="/year/09/14/README/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Dian2021夏令营">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="README.md">
                         
-                        <span class="card-title">Dian2021夏令营</span>
+                        <span class="card-title">README.md</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            报名参加夏令营起初是想花时间研究AI机器学习领域的经典算法，然后做了dian的一个lab
-
+                            README记录博客更新功能历程
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/AI/" class="post-category" target="_blank">
-                                    AI
-                                </a>
-                            
-                            
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/dian/" target="_blank">
-                        <span class="chip bg-color">dian</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" target="_blank">
-                        <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                    <a href="/tags/CNN%E7%AE%80%E6%98%93%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/" target="_blank">
-                        <span class="chip bg-color">CNN简易框架搭建</span>
-                    </a>
-                    
                 </div>
                 
             </div>
