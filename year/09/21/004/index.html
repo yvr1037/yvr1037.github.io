@@ -701,7 +701,7 @@
 <li>2021/09/25更新：实现外网连接实验室服务器的功能</li>
 </ul>
 <h5 id="1-实现远程连接服务器"><a href="#1-实现远程连接服务器" class="headerlink" title="1.实现远程连接服务器"></a>1.实现远程连接服务器</h5><h6 id="1-本地服务准备"><a href="#1-本地服务准备" class="headerlink" title="1.本地服务准备"></a>1.本地服务准备</h6><p>本地主机上打开windows terminal窗口(现在的windows一般会自动安装openSSH客户端和服务端),执行命令：</p>
-<pre class="line-numbers language-none"><code class="language-none">ssh -keygen -t rsa
+<pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t rsa
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>执行命令后会在<code>.ssh</code>文件下生成两个密钥，<code>id_rsa</code>和<code>id_rsa.pub</code>一个私钥一个公钥;实现远程连接服务器关键是把<strong>公钥</strong>存放到远程服务器端</p>
 <h6 id="2-配置本地config文件"><a href="#2-配置本地config文件" class="headerlink" title="2.配置本地config文件"></a>2.配置本地config文件</h6><h6 id="3-将本地公钥上传至服务器"><a href="#3-将本地公钥上传至服务器" class="headerlink" title="3.将本地公钥上传至服务器"></a>3.将本地公钥上传至服务器</h6><p>在windows terminal下执行命令</p>
@@ -709,7 +709,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>本地公钥拷贝至远程服务器[注意xxx更改为自己在远程服务器端分配的用户名！！！],此时传过来的公钥存在<code>./home/xxx</code>下</p>
 <h6 id="4-公钥写入授权文件"><a href="#4-公钥写入授权文件" class="headerlink" title="4.公钥写入授权文件"></a>4.公钥写入授权文件</h6><p>在远程服务器上执行命令</p>
-<pre class="line-numbers language-none"><code class="language-none">touch ./ssh/authorized_keys
+<pre class="line-numbers language-none"><code class="language-none">touch ./.ssh/authorized_keys
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>远程服务器端这边用的是linux系统，所以先要创建文件<code>authorized_keys</code></p>
 <p>将本地传过来的密钥<strong>写入authorizd_keys</strong>中</p>
