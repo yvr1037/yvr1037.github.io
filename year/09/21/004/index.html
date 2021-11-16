@@ -670,14 +670,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        596
+                        924
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        2 Min
+                        3 Min
                     </div>
                     
                 
@@ -723,12 +723,40 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>执行后需要远程服务器的密码：********</p>
 <p>输入密码后进行远程连接操作</p>
-<pre class="line-numbers language-none"><code class="language-none">ssh username@远程服务器ip地址
+<pre class="line-numbers language-none"><code class="language-none">ssh username@host
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果本地用户名和远程用户名一致,登录时可以省略用户名</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh host
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>SSH的默认端口是22,也就是说你的登录请求会送进远程主机的22端口.使用<code>-p</code>参数可以修改端口</p>
+<pre><code>ssh -p 2222 user@host  # 此条命令表示ssh直接连接远程主机的2222端口
+</code></pre>
 <p>我写的比较粗糙,(偷个懒)可以参考我朋友的blog：</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://lry89757.github.io/2021/09/24/linux-bi-ji/">朋友的博客</a></p>
 </blockquote>
+<p>、最后的实验就是如下的效果:</p>
+<ul>
+<li><p>连接外网的情况下</p>
+<h5 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h5><pre><code># 两种方法：(在已经配置好confi和公钥文件下并且打开jump跳板和开启“Identiyfile"下)
+ssh 43004   # 必须要打开跳板权限,而且回车后每次都要输入服务器所在公网地址的密码
+            # 当然分配给user@hosts的密码要看你是否注释了公钥
+ssh gyf@192.168.0.75 # 这样访问在内网下使用，当然内网下也可以使用ssh 43004连接服务器
+</code></pre>
+<ul>
+<li><h5 id="外网访问"><a href="#外网访问" class="headerlink" title="外网访问"></a>外网访问</h5><ul>
+<li><strong>ssh 43004</strong>:需要输入服务器所在公网地址密码和分配给用户的密码</li>
+<li><strong>ssh user@host</strong>:不能连接服务器</li>
+</ul>
+</li>
+<li><h5 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h5><ul>
+<li><strong>ssh 43004</strong>:仍然需要输入服务器所在公网地址密码但是不用输入分配给用户的密码了</li>
+<li><strong>ssh user@host</strong>:这样公网密码和分配给用户的密码都不用输入了直接连接</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -1367,7 +1395,7 @@ git
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">9.6k</span> 字
+                <span class="white-color">9.9k</span> 字
             
 
             
