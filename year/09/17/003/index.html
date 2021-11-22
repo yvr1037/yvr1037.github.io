@@ -706,8 +706,8 @@
 <pre class="line-numbers language-c++"><code class="language-c++"># 冒泡排序(以下实现从小到大排序)
 int a[n]={......};
 for(int i=1;i<n;i++){  //进行n-1躺
-    //第i躺，从a[0]-a[n-i-1]每一个数都要与下一个数进行比较，遇到后面比自己较大的数就交换，实现每一趟剩余的数a[0]-a[n-        i]的冒泡排序，使当前a[0]~a[n-i]中的最大的元素移动到z'y，后面的a[n-i+1]-a[i]已经排好序
-    for(int i=0;j< n-i;j++){
+//第i躺，从a[0]-a[n-i-1]每一个数都要与下一个数进行比较，遇到后面比自己较大的数就交换，实现每一趟剩余的数a[0]-a[n-    i]的冒泡排序，使当前a[0]~a[n-i]中的最大的元素移动到最后面的,a[n-i+1]-a[i]已经排好序
+    for(int j=0;j< n-i;j++){
         if(a[j] > a[j+1]){  //如果左边的数更大，则a[j]与a[j+1]交换
             int temp = a[j];
             a[j] = a[j+1];
@@ -1562,7 +1562,7 @@ int mian(){
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">9.9k</span> 字
+                <span class="white-color">10.1k</span> 字
             
 
             
