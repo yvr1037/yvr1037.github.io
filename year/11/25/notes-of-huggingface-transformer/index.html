@@ -494,7 +494,7 @@ Transformers(前身是称为pytorch Transformers和pytorch pretrained">
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '4c7f9b2ac30e46a0388ac3fdf116878b271004b2185d6d10a29b201beaa65163';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -667,14 +667,14 @@ Transformers(前身是称为pytorch Transformers和pytorch pretrained">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        5.9k
+                        6.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        28 Min
+                        29 Min
                     </div>
                     
                 
@@ -942,6 +942,7 @@ result <span class="token operator">=</span> unmasker<span class="token punctuat
 </tbody></table>
 <h4 id="Using-Transformers"><a href="#Using-Transformers" class="headerlink" title="Using Transformers"></a>Using Transformers</h4><ul>
 <li><p><strong>Ease of use</strong>: Downloading, loading, and using a state-of-the-art NLP model for inference can be done in just two lines of code.</p>
+<p>下载，加载和使用SOTA的NLP模型进行推理很简单的API调用即可</p>
 </li>
 <li><p><strong>Flexibility</strong>: At their core, all models are simple PyTorch <code>nn.Module</code> or TensorFlow <code>tf.keras.Model</code> classes and can be handled like any other models in their respective machine learning (ML) frameworks.</p>
 <p>其实所有模型都是Pytorch <strong>nn.module</strong>和Tensorflow <strong>tf.keras.model</strong>类，并且可以像各自机器学习框架的任何其他模型一样进行处理。</p>
@@ -950,7 +951,10 @@ result <span class="token operator">=</span> unmasker<span class="token punctuat
 </li>
 </ul>
 <p>This last feature makes 🤗 Transformers quite different from other ML libraries. The models are not built on modules that are shared across files; instead, each model has its own layers. In addition to making the models more approachable and understandable, this allows you to easily experiment on one model without affecting others.</p>
-<p>这些模型不是建立在</p>
+<p>这些模型不是建立在跨文件共享的模块上.</p>
+<p>This chapter will begin with an end-to-end example where we use a model and a tokenizer together to replicate the <code>pipeline()</code> function introduced in <a target="_blank" rel="noopener" href="https://huggingface.co/course/chapter1">Chapter 1</a>. Next, we’ll discuss the model API: we’ll dive into the model and configuration classes, and show you how to load a model and how it processes numerical inputs to output predictions.</p>
+<p>接下来从一个端到端的例子开始，使用一个模型和分词器来深入理解pipeline函数；稍后，深入讨论模型API：深入研究模型和配置类，并展开如可加载模型以及如何处理数值输入以便输出预测。</p>
+<p>Then we’ll look at the tokenizer API, which is the other main component of the <code>pipeline()</code> function. Tokenizers take care of the first and last processing steps, handling the conversion from text to numerical inputs for the neural network, and the conversion back to text when it is needed. Finally, we’ll show you how to handle sending multiple sentences through a model in a prepared batch, then wrap it all up with a closer look at the high-level <code>tokenizer()</code> function.</p>
 
             </div>
             <hr/>
@@ -1577,7 +1581,7 @@ Co-reference ResolutionBackground
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">15.6k</span> 字
+                <span class="white-color">15.9k</span> 字
             
 
             
