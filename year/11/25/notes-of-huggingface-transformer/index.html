@@ -494,7 +494,7 @@ Transformers(前身是称为pytorch Transformers和pytorch pretrained">
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'ff3f4036a1164d1ddbad5b3edf9022addb3e1961a54a922708a6c1ffc49e5489';
+        let pwd = '4c7f9b2ac30e46a0388ac3fdf116878b271004b2185d6d10a29b201beaa65163';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -667,7 +667,7 @@ Transformers(前身是称为pytorch Transformers和pytorch pretrained">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        5.8k
+                        5.9k
                     </div>
                     
 
@@ -941,10 +941,16 @@ result <span class="token operator">=</span> unmasker<span class="token punctuat
 </tr>
 </tbody></table>
 <h4 id="Using-Transformers"><a href="#Using-Transformers" class="headerlink" title="Using Transformers"></a>Using Transformers</h4><ul>
-<li><strong>Ease of use</strong>: Downloading, loading, and using a state-of-the-art NLP model for inference can be done in just two lines of code.</li>
-<li><strong>Flexibility</strong>: At their core, all models are simple PyTorch <code>nn.Module</code> or TensorFlow <code>tf.keras.Model</code> classes and can be handled like any other models in their respective machine learning (ML) frameworks.</li>
-<li><strong>Simplicity</strong>: Hardly any abstractions are made across the library. The “All in one file” is a core concept: a model’s forward pass is entirely defined in a single file, so that the code itself is understandable and hackable.</li>
+<li><p><strong>Ease of use</strong>: Downloading, loading, and using a state-of-the-art NLP model for inference can be done in just two lines of code.</p>
+</li>
+<li><p><strong>Flexibility</strong>: At their core, all models are simple PyTorch <code>nn.Module</code> or TensorFlow <code>tf.keras.Model</code> classes and can be handled like any other models in their respective machine learning (ML) frameworks.</p>
+<p>其实所有模型都是Pytorch <strong>nn.module</strong>和Tensorflow <strong>tf.keras.model</strong>类，并且可以像各自机器学习框架的任何其他模型一样进行处理。</p>
+</li>
+<li><p><strong>Simplicity</strong>: Hardly any abstractions are made across the library. The “All in one file” is a core concept: a model’s forward pass is entirely defined in a single file, so that the code itself is understandable and hackable.</p>
+</li>
 </ul>
+<p>This last feature makes 🤗 Transformers quite different from other ML libraries. The models are not built on modules that are shared across files; instead, each model has its own layers. In addition to making the models more approachable and understandable, this allows you to easily experiment on one model without affecting others.</p>
+<p>这些模型不是建立在</p>
 
             </div>
             <hr/>
@@ -1571,7 +1577,7 @@ Co-reference ResolutionBackground
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">15.5k</span> 字
+                <span class="white-color">15.6k</span> 字
             
 
             
