@@ -693,10 +693,10 @@
                 <h4 id="Abstract-amp-amp-Introduction"><a href="#Abstract-amp-amp-Introduction" class="headerlink" title="Abstract &amp;&amp; Introduction"></a>Abstract &amp;&amp; Introduction</h4><p>​    这几天阅读了一篇较早提出Attention machanism的论文<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1409.0473">Neural Machine Translation by Jointly Learning to Align and Translate</a>,这篇论文将注意力机制应用在神经网络翻译中，论文的思路从传统NMT(Neural Machine Translation)系统的缺陷说起，针对其进行改进，最后进行了定量和定性分析.</p>
 <p>​    首先我们要了解经典的Sea2Seq模型是如何进行翻译的：整体模型采用Encoder-Decoder进行分析，将输入的序列经过Encoder处理，压缩成一个Fixed-length Vector；在Decoder阶段，将这个向量的信息还原成一个序列完成翻译任务。基于RNN的Seq2Seq模型主要由两篇文章介绍，只是采用了不同的RNN模型。Ilya Sutskever等人2014年在论文《Sequence to Sequence Learning with Neural Networks》中使用LSTM来搭建Seq2Seq模型。随后，2015年，Kyunghyun Cho等人在论文《Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation》提出了基于GRU的Seq2Seq模型。想要解决的主要问题就是如何把机器翻译中，变长的输入X映射到一个变长输出Y。而这篇论文提出一种新的方法，这个方法也是基于<code>encoder-decoder</code>的，与之前的<code>encoder-decoder</code>模型不同的是，每次在翻译一个单词的时候，模型会自动搜寻该单词与源句子哪些单词有关联，并将这种关联的强度进行数字化表示(在模型中就是权重)，并且训练得出这种方法可以解决句子翻译不准的问题。</p>
 <h4 id="传统RNN"><a href="#传统RNN" class="headerlink" title="传统RNN"></a>传统RNN</h4><p>​    大部分的神经机器翻译都是基于<code>encoder-decoder</code>框架的并且都会将源语言句子序列压缩成一个固定的向量，然后传递给decoder。传统的RNN Encoder-Decoder模型在训练阶段时候，会使模型去最大化源语言翻译成目标语言的条件概率。当模型训练好之后，当代翻译的源语言句子放入到模型中后，模型会自动计算最大目标句子的概率并且将这个句子当作是翻译后的句子。简单介绍以下传统的RNN:</p>
-<p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210920180508294.png" alt="image-20210920180508294"></p>
+<p><img src="https://s2.loli.net/2021/12/23/qwz1MDimjBKYVfI.png" alt="image-20210920180508294.png"></p>
 <p>上图中<code>C</code>的左侧是<code>Encoder</code>,右侧是<code>Decoder</code>,”C”是待翻译语句的语义信息；输入一个句子的时候会经过Encoder，Encoder讲这句话进行编码，Encoder用到的模型是RNN，编码结束以后将最后一个时刻RNN的隐层的输出当作输入的这句话的”语义压缩”。然后解码器每产生一个翻译后的英文单词的时候，都会利用<strong>C</strong>并且还会接受输入t时刻的上一个隐藏向量<strong>s</strong>。这个时刻的输出端就会产生第一个单词(这里使用了softmax函数，输出层是一个词典大小维度的向量)，哪个维度的值最大就取哪个维度所对应的单词。大家可以明白的是训练阶段，Encoder和Decoder不可能立马产生目标单词，而是产生一个预测结果，训练的目的就是不断优化参数。</p>
 <h4 id="Attention机制加入"><a href="#Attention机制加入" class="headerlink" title="Attention机制加入"></a>Attention机制加入</h4><p>本paper提出的模型叫做<strong>RNNsearch</strong>：</p>
-<p><img src="C:\Users\VrShadow\AppData\Roaming\Typora\typora-user-images\image-20210920183014609.png" alt="image-20210920183014609"></p>
+<p><img src="https://s6.jpg.cm/2021/12/23/LbozvD.png" alt="LbozvD.png"></p>
 <p>​    图中的右半部分是encoder，这一部分和RNNenc模型一样，重点在decoder部分和传统的会有巨大的差别；在t=0时刻，decoder的BiLSTM接受三个输入，第一个是初始状态s0(这个是随机初始化的，无论是训练阶段还是预测阶段都是随机)；第二个输入来源于emdedding后的向量；第三个输入比较复杂，也是新模型的核心创新点</p>
 <p>​    首先，随机初 算(计算方式有很多种可以自己定义)，各自得到一个e1 ~ e6的值，对这个6个值进行一次softmax得到α1 ~ α6，和是1；将α1，α2，α3，α4，α5，α6看作是s0和h1 ~ h6的相似度。然后α和h向量做一次元素乘积，得到的6个向量做一次元素的相加得到最终的向量。将这个向量当作0时刻BiLSTM的第三个输入。时刻0，BiLSTM就会有一个输出，时刻变为1，接下来的过程继续向后进行。</p>
 <p><a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html">NLP From Scratch: Translation with a Sequence to Sequence Network and Attention</a>实现Seq2Seq(Attention)后的模型，基本实现了此篇论文的创新点。</p>
@@ -1129,7 +1129,7 @@
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/year/09/17/003/">
+                <a href="/year/09/17/basic_alogorithm/">
                     <div class="card-image">
                         
                         
@@ -1348,7 +1348,7 @@
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">9.8k</span> 字
+                <span class="white-color">10.4k</span> 字
             
 
             
