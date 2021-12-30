@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>take tensorboard</title>
+      <link href="/year/12/30/take-tensorboard/"/>
+      <url>/year/12/30/take-tensorboard/</url>
+      
+        <content type="html"><![CDATA[<h5 id="Perface"><a href="#Perface" class="headerlink" title="Perface:"></a>Perface:</h5><ul><li><a href="https://blog.csdn.net/weixin_56728251/article/details/116322383">https://blog.csdn.net/weixin_56728251/article/details/116322383</a></li><li><a href="https://blog.csdn.net/shenfuli/article/details/108436423">https://blog.csdn.net/shenfuli/article/details/108436423</a></li><li><a href="https://blog.csdn.net/bigbennyguo/article/details/87956434">https://blog.csdn.net/bigbennyguo/article/details/87956434</a></li></ul><h5 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h5><p><strong>Tensorboard</strong>是tensorflow内置的一个可视化工具，它通过将tensorflow程序输出的日志文件的信息可视化使得tensorflow程序的理解、调试和优化更加简单高效。<br>Tensorboard的可视化依赖于tensorflow程序运行输出的日志文件，因而tensorboard和tensorflow程序在不同的进程中运行。<br>TensorBoard给我们提供了极其方便而强大的可视化环境。它可以帮助我们理解整个神经网络的学习过程、数据的分布、性能瓶颈等等。</p><p>可是对于 PyTorch 等其他神经网络训练框架并没有功能像 Tensorboard 一样全面的类似工具，一些已有的工具功能有限或使用起来比较困难 (tensorboard_logger, visdom等) 。TensorboardX 这个工具使得 TensorFlow 外的其他神经网络框架也可以使用到 Tensorboard 的便捷功能。github上已经有大神将tensorboard应用到pytorch中,<a href="https://github.com/lanpa/tensorboardX">仓库</a>在这里</p><p>说白了，tensorboard原本是在tensoflow框架上应用的，后来有大神在pytorch也开发出了这样的框架。Pytorch安装Tensorboard可以参考TensorboardX的<a href="https://github.com/lanpa/tensorboardX/blob/master/README.md">readme</a>文件.</p><h5 id="Use-TensorboardX"><a href="#Use-TensorboardX" class="headerlink" title="Use TensorboardX"></a>Use TensorboardX</h5><p>1.创建一个SummaryWiter示例</p><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> tensorboardX <span class="token keyword">import</span> SummaryWriter<span class="token comment" spellcheck="true"># Creates writer1 object.</span><span class="token comment" spellcheck="true"># The log will be saved in 'runs/exp'</span>writer1 <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token string">'runs/exp'</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># Creates writer2 object with auto generated file name</span><span class="token comment" spellcheck="true"># The log directory will be something like 'runs/Aug20-17-20-33'</span>writer2 <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># Creates writer3 object with auto generated file name, the comment will be appended to the filename.</span><span class="token comment" spellcheck="true"># The log directory will be something like 'runs/Aug20-17-20-33-resnet'</span>writer3 <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span>comment<span class="token operator">=</span><span class="token string">'resnet'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>以上有三种初始化创建SummaryWriter的方法</p><ol><li>提供一个路径,使用该路径来保存日志</li><li>无参数，默认使用<strong>runs/日期时间</strong>路径保存日志</li><li>提供一个comment参数，将使用<strong>runs/日期时间-comment</strong>路径保存日志</li></ol><p>一般来讲，我们对于每次实验新建一个路径不同的 SummaryWriter，也叫一个 run，如 runs/exp1、runs/exp2。</p><p>接下来，我们就可以调用 SummaryWriter 实例的各种 add_something 方法向日志中写入不同类型的数据了。想要在浏览器中查看可视化这些数据，只要在命令行中开启 tensorboard 即可：</p><pre class="line-numbers language-python"><code class="language-python">tensorboard <span class="token operator">-</span><span class="token operator">-</span>logdir<span class="token operator">=</span><span class="token operator">&lt;</span>your_log_dir<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中的 <your_log_dir> 既可以是单个 run 的路径，如上面 writer1 生成的 runs/exp；也可以是多个 run 的父目录，如 runs/ 下面可能会有很多的子文件夹，每个文件夹都代表了一次实验，我们令 <code>--logdir=runs/</code> 就可以在 tensorboard 可视化界面中方便地横向比较 runs/ 下不同次实验所得数据的差异。</your_log_dir></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> tensorboard </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mmdetection-of-fenghuo-sockets-projects</title>
       <link href="/year/12/23/mmdetection-of-fenghuo-sockets-projects/"/>
       <url>/year/12/23/mmdetection-of-fenghuo-sockets-projects/</url>
