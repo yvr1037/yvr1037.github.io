@@ -655,14 +655,14 @@ https://blog.csdn.net/shenfuli/article/details/">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        651
+                        790
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        2 Min
+                        3 Min
                     </div>
                     
                 
@@ -687,7 +687,7 @@ https://blog.csdn.net/shenfuli/article/details/">
 <h5 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h5><p><strong>Tensorboard</strong>是tensorflow内置的一个可视化工具，它通过将tensorflow程序输出的日志文件的信息可视化使得tensorflow程序的理解、调试和优化更加简单高效。<br>Tensorboard的可视化依赖于tensorflow程序运行输出的日志文件，因而tensorboard和tensorflow程序在不同的进程中运行。<br>TensorBoard给我们提供了极其方便而强大的可视化环境。它可以帮助我们理解整个神经网络的学习过程、数据的分布、性能瓶颈等等。</p>
 <p>可是对于 PyTorch 等其他神经网络训练框架并没有功能像 Tensorboard 一样全面的类似工具，一些已有的工具功能有限或使用起来比较困难 (tensorboard_logger, visdom等) 。TensorboardX 这个工具使得 TensorFlow 外的其他神经网络框架也可以使用到 Tensorboard 的便捷功能。github上已经有大神将tensorboard应用到pytorch中,<a target="_blank" rel="noopener" href="https://github.com/lanpa/tensorboardX">仓库</a>在这里</p>
 <p>说白了，tensorboard原本是在tensoflow框架上应用的，后来有大神在pytorch也开发出了这样的框架。Pytorch安装Tensorboard可以参考TensorboardX的<a target="_blank" rel="noopener" href="https://github.com/lanpa/tensorboardX/blob/master/README.md">readme</a>文件.</p>
-<h5 id="Use-TensorboardX"><a href="#Use-TensorboardX" class="headerlink" title="Use TensorboardX"></a>Use TensorboardX</h5><p>1.创建一个SummaryWiter示例</p>
+<h5 id="Use-Tensorboard"><a href="#Use-Tensorboard" class="headerlink" title="Use Tensorboard"></a>Use Tensorboard</h5><p>1.创建一个SummaryWiter示例</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> tensorboardX <span class="token keyword">import</span> SummaryWriter
 
 <span class="token comment" spellcheck="true"># Creates writer1 object.</span>
@@ -713,6 +713,8 @@ writer3 <span class="token operator">=</span> SummaryWriter<span class="token pu
 <pre class="line-numbers language-python"><code class="language-python">tensorboard <span class="token operator">-</span><span class="token operator">-</span>logdir<span class="token operator">=</span><span class="token operator">&lt;</span>your_log_dir<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>其中的 <your_log_dir> 既可以是单个 run 的路径，如上面 writer1 生成的 runs/exp；也可以是多个 run 的父目录，如 runs/ 下面可能会有很多的子文件夹，每个文件夹都代表了一次实验，我们令 <code>--logdir=runs/</code> 就可以在 tensorboard 可视化界面中方便地横向比较 runs/ 下不同次实验所得数据的差异。</your_log_dir></p>
+<h5 id="使用add方法记录数据"><a href="#使用add方法记录数据" class="headerlink" title="使用add方法记录数据"></a>使用add方法记录数据</h5><p>tensorboard针对不同的类型人为的区分多个标签，每一个标签页面代表不同的类型，下面详细介绍 SummaryWriter 实例的各种数据记录方法</p>
+<h6 id="scalar"><a href="#scalar" class="headerlink" title="scalar"></a>scalar</h6><p>对标量数据进行汇总和记录，通常用来可视化训练过程中随着迭代次数准确率(val acc)、损失值(train/test loss)、学习率(learning rate)、每一层的权重和偏置的统计量(mean、std、max/min)等的变化曲线，使用 <code>add_scalar</code> 方法来记录数字常量。</p>
 
             </div>
             <hr/>
@@ -1041,7 +1043,7 @@ https://blog.csdn.net/shenfuli/article/details/
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">45.4k</span> 字
+                <span class="white-color">45.5k</span> 字
             
 
             
